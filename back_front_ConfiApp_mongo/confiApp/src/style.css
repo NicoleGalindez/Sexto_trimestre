@@ -1,0 +1,12 @@
+html,body{
+    background-color: rgb(221, 252, 252);
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    padding: 30px;
+}
+.avatar{
+    margin: 50px;
+    border-radius: 50%;
+    
+}
