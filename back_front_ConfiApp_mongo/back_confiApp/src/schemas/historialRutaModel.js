@@ -17,6 +17,8 @@ export const historialRuta_Mongoose = new Schema({
     "historialRutaFecha": Date,
     "historialRutaHora": Date,
     "historialRutaSalida": String,
+    "hSalida":{"latitud": String, "longitud": String},
+    "hLlegada":{"latitud": String, "longitud": String},
     "historialRutaLlegada": String,
     "historialRutaKilometros": String,
     "rutaIdruta": Number,

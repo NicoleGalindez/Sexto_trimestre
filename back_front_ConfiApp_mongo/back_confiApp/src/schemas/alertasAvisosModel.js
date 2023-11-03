@@ -15,7 +15,7 @@ const model = mongoose.model;
 export const alertasAvisos_Mongoose = new Schema({
     "_id": mongoose.ObjectId,
     "tipoAlertaAviso": String,
-    "ultimaUbicacion": Object,
+    "ultimaUbicacion": {"latitud": String, "longitud": String},
     "mensajeAlertaAviso": String,
     "vozAlertaAviso": Buffer,
 }, { collection: "alertasAvisos" })

@@ -14,12 +14,11 @@ const model = mongoose.model;
 
 export const ruta_Mongoose = new Schema({
     "_id": mongoose.ObjectId,
-    "idusuario": Number,
     "fechaRuta": Date,
     "puntoSalida": String,
-    "geosalida": Object,
+    "geosalida": {"latitud": String, "longitud": String},
     "puntoLlegada": String,
-    "geollegada": Object,
+    "geollegada": {"latitud": String, "longitud": String},
     "tiempoEstimado": Date,
     "estado": String,
     "medioTransporte": String,
