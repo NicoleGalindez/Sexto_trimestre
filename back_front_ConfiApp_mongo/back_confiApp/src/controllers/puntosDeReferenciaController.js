@@ -1,21 +1,17 @@
-import express from 'express';
-import { puntosDeReferencia_MongooseModel } from './rutaModel'; // Asegúrate de importar el modelo de puntosDeReferencia
+import { puntosDeReferencia_MongooseModel } from './rutaModel';
 
-const router = express.Router();
-
-
-// Read - Obtener todos los puntos de referencia
-router.get('/puntosDeReferencia', async (req, res) => {
+// Controlador para obtener todos los puntos de referencia
+export const getAllPuntosDeReferencia = async (req, res) => {
   try {
     const puntosDeReferencia = await puntosDeReferencia_MongooseModel.find();
     res.status(200).json(puntosDeReferencia);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
+};
 
-// Read - Obtener un punto de referencia específico por su ID
-router.get('/puntosDeReferencia/:id', async (req, res) => {
+// Controlador para obtener un punto de referencia específico por su ID
+export const getPuntoDeReferenciaById = async (req, res) => {
   try {
     const puntoDeReferencia = await puntosDeReferencia_MongooseModel.findById(req.params.id);
     if (!puntoDeReferencia) {
@@ -26,21 +22,20 @@ router.get('/puntosDeReferencia/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
+};
 
-// Create - Crear un nuevo punto de referencia
-router.post('/puntosDeReferencia', async (req, res) => {
+// Controlador para crear un nuevo punto de referencia
+export const createPuntoDeReferencia = async (req, res) => {
   try {
     const nuevoPuntoDeReferencia = await puntosDeReferencia_MongooseModel.create(req.body);
     res.status(201).json(nuevoPuntoDeReferencia);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
+};
 
-
-// Update - Actualizar un punto de referencia por su ID
-router.put('/puntosDeReferencia/:id', async (req, res) => {
+// Controlador para actualizar un punto de referencia por su ID
+export const updatePuntoDeReferencia = async (req, res) => {
   try {
     const puntoDeReferenciaActualizado = await puntosDeReferencia_MongooseModel.findByIdAndUpdate(
       req.params.id,
@@ -55,10 +50,10 @@ router.put('/puntosDeReferencia/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
+};
 
-// Delete - Eliminar un punto de referencia por su ID
-router.delete('/puntosDeReferencia/:id', async (req, res) => {
+// Controlador para eliminar un punto de referencia por su ID
+export const deletePuntoDeReferencia = async (req, res) => {
   try {
     const puntoDeReferenciaEliminado = await puntosDeReferencia_MongooseModel.findByIdAndRemove(req.params.id);
     if (!puntoDeReferenciaEliminado) {
@@ -69,6 +64,4 @@ router.delete('/puntosDeReferencia/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-});
-
-export default router;
+};

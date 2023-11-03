@@ -1,20 +1,17 @@
-import express from "express";
-import { alertasAvisos_MongooseModel } from "./tu_archivo_de_modelo"; // Asegúrate de importar el modelo correctamente
+import { alertasAvisos_MongooseModel } from "./tu_archivo_de_modelo";
 
-const router = express.Router();
-
-// Ruta para obtener todas las alertas o avisos
-router.get("/", async (req, res) => {
+// Controlador para obtener todas las alertas o avisos
+export const getAllAlertasAvisos = async (req, res) => {
   try {
     const alertasAvisos = await alertasAvisos_MongooseModel.find();
     res.json(alertasAvisos);
   } catch (error) {
     res.status(500).json({ error: "Error al obtener las alertas o avisos" });
   }
-});
+};
 
-// Ruta para obtener una alerta o aviso por ID
-router.get("/:id", async (req, res) => {
+// Controlador para obtener una alerta o aviso por ID
+export const getAlertaAvisoById = async (req, res) => {
   try {
     const alertaAviso = await alertasAvisos_MongooseModel.findById(req.params.id);
     if (!alertaAviso) {
@@ -24,10 +21,10 @@ router.get("/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error al obtener la alerta o aviso" });
   }
-});
+};
 
-// Ruta para crear una nueva alerta o aviso
-router.post("/", async (req, res) => {
+// Controlador para crear una nueva alerta o aviso
+export const createAlertaAviso = async (req, res) => {
   const { tipoAlertaAviso, ultimaUbicacion, mensajeAlertaAviso, vozAlertaAviso } = req.body;
 
   try {
@@ -43,10 +40,10 @@ router.post("/", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error al crear una nueva alerta o aviso" });
   }
-});
+};
 
-// Ruta para actualizar una alerta o aviso por ID
-router.put("/:id", async (req, res) => {
+// Controlador para actualizar una alerta o aviso por ID
+export const updateAlertaAviso = async (req, res) => {
   try {
     const alertaAviso = await alertasAvisos_MongooseModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!alertaAviso) {
@@ -56,10 +53,10 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error al actualizar la alerta o aviso" });
   }
-});
+};
 
-// Ruta para eliminar una alerta o aviso por ID
-router.delete("/:id", async (req, res) => {
+// Controlador para eliminar una alerta o aviso por ID
+export const deleteAlertaAviso = async (req, res) => {
   try {
     const alertaAviso = await alertasAvisos_MongooseModel.findByIdAndRemove(req.params.id);
     if (!alertaAviso) {
@@ -69,6 +66,4 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error al eliminar la alerta o aviso" });
   }
-});
-
-export default router;
+};
