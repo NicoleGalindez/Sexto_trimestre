@@ -8,9 +8,7 @@ import {Hook_U_STATE,
        Hook_U_CONTEXT,
        Hook_U_REF,
        Hook_U_REDUCER,
-       Hook_U_MEMO,
-       HOOk_U_CALLBACK,
-       HOOk_U_LAYOUTEFFECT
+       Hook_U_MEMO
        
      } from "./Hooks";
 import './style.css';
@@ -27,7 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
      <Hook_U_REF/>
      <Hook_U_REDUCER/>
      <Hook_U_MEMO/>
-
+     
 
      </React.StrictMode>
 )

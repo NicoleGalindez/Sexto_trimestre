@@ -12,24 +12,22 @@ const USE_LAYOUT_EFFECT= 'useLayoutEffect';
 
 
 
-import React, {useState, useEffect, useRef, useReducer, useMemo, useCallbak, useLayoutEffect} from 'react';
+import React, {useState, useEffect, useRef, useReducer, useMemo, useCallback, useLayoutEffect} from 'react';
 
 //useState_______________________________________________
 export function Hook_U_STATE(){
    const [counter,setCounte]= useState(0);
    const [name,SetName]= useState('hello');
   
-
 // primera variable es para actualizar el componente y la segunda para llamar cuando uno quiera y actualizar
-
    return(
     <>
     <h5>{USE_STATE}</h5>
 	<h1>{counter}</h1>
-	<button onClick={()=> setCounte(counter + 1)}> + </button>
-    
-    <h1>{name}</h1>
-    <h4>{r}</h4>
+	<button onClick={()=> setCounte(counter + 5)}> + </button>
+    <button onClick={()=> setCounte(counter - 10)}> - </button>
+    <h1>{  name  }</h1>
+    <h4>{  r  }</h4>
    </>
 );
 
@@ -44,8 +42,8 @@ export function Hook_U_EFFECT(){
     const [count,setCounte]= useState(0);
 
     useEffect(()=>{
-        // hacer cualquier cosa al momento de correr o hacer algo en la aplicacion
-        setCounte(count+1);  
+        // hacer cualquier cosa al momento de correr o hacer algo en la aplicacion //controla (carga) las actualizaciones
+        setCounte(count+1 );  
         return()=>{
            console.log('Cleanup') 
         } 
@@ -64,14 +62,16 @@ export function Hook_U_EFFECT(){
 // no necesariamente importa desde react sino que lo llama con la palabra reservada React.creatContext
 
 const themes ={
-    light:{     foreground:"#000000", background:"#eeeeee"  },
-    dark: {      foreground:"#ffffff", background:"#222222"}
+    light:{     foreground:"#000000", background:"#eeeeee"},
+    dark: {     foreground:"#ffffff", background:"#222222"},
+    blue: {     foreground:"#ffffff", background:"#2000DB"},
+    blue2:{     foreground:"#ffffff", background:"#405ADB"}
 };
 
 const ThemeContext= React.createContext(themes.light);
 
 export function Hook_U_CONTEXT(){
-    return(        <ThemeContext.Provider value={themes.dark}>
+    return(        <ThemeContext.Provider value={themes.blue2}>
                         <Toolbar />
                    </ThemeContext.Provider>)
 }
@@ -83,10 +83,12 @@ function Toolbar (props){
 }
 
 function ThemeButton(){
+
     const theme=React.useContext(ThemeContext);
+
     return(<>   <h5>{USE_CONTEXT}</h5>
         <button style={{background:theme.background, color:theme.foreground}}>
-            I'm styled by theme context!
+         context!
         </button>
         <h4>{r}</h4>  </>
           );
@@ -103,9 +105,10 @@ export function Hook_U_REF(){
     const handleClick=()=>{
         alert(inputRef.current.value)
     }
+
     return(
         <>    <h5>{USE_REF}</h5>
-        <h1>Hello Youtube</h1>
+        <h1>Hello ADSO</h1>
         <input type='text' ref={inputRef}/>
         <button onClick={handleClick}> UseRef</button>
         <h4>{r}</h4>
@@ -121,7 +124,7 @@ export function Hook_U_REF(){
 const initialState= {count:0};
 
  function  reducer(state,action){
-    switch (action, type){
+    switch (action.type){
         case 'increment':
             return{count:state.count + 1};
         case 'decrement':
@@ -130,12 +133,12 @@ const initialState= {count:0};
                 throw new Error();
     }}
 // dispatch envia al store y el al componente
-export  function Hook_U_REDUCER(){
+export  function Hook_U_REDUCER(){ 
      const [state, dispatch] = useReducer(reducer, initialState);
      return ( <>    <h5>{USE_REDUCER}</h5>
-          Count: {state.count}
-          <button onClick={()=>dispatch({type:'increment'})}>+</button>
-          <button onClick={()=>dispatch({type:'decrement'})}>-</button>
+          Count: {state.count} <br/>
+          <button onClick={()=>dispatch({type:'increment'})}>+</button> 
+          <button onClick={()=>dispatch({type:'decrement'})}>-</button> 
           <h4>{r}</h4>
         </> )
 }
@@ -158,18 +161,23 @@ export function Hook_U_MEMO(){
 }
 
 //useCallbak________memoriza una funcion______________________________
-// renderiza cada que cambia
-export function HOOk_U_CALLBACK(){
-    const [count, setCount] =useState(100);
+// y renderiza cada que cambia
 
-    const showCount =useCallbak(()=>{
-        alert(count);
-    },[count])
-    return(<>  <h5>{USE_CALLBACK}</h5>
-            <ExampleChild>  </ExampleChild>
-            </>
-    );
-}
+// export function HOOk_U_CALLBACK() {
+//     const [count, setCount] = useState(100);
+  
+//     const showCount = useCallback(() => {
+//       alert( count);
+//     }, [count]);
+  
+//     return (
+//       <>
+//         <h5>USE_CALLBACK</h5>
+//         <ExampleChild handler={showCount} />
+//       </>
+//     );
+//   }
+
 
 //useLayoutEffect____________________________________________
 // similar a useEffect
