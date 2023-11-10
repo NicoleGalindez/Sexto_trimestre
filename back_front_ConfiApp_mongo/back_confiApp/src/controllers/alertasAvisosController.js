@@ -47,7 +47,7 @@ export const updateAlertaAviso = async (req, res) => {
   try {
     const alertaAviso = await alertasAvisos_MongooseModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!alertaAviso) {
-      return res.status(404).json({ error: "Alerta o aviso no encontrado" });
+      return res.status(404).json({ error: "Alerta o aviso actualizada" });
     }
     res.json(alertaAviso);
   } catch (error) {

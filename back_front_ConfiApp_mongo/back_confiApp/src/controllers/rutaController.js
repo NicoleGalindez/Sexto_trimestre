@@ -15,7 +15,7 @@ export const getRutaActivaById = async (req, res) => {
   try {
     const rutaActiva = await rutaActiva_MongooseModel.findById(req.params.id);
     if (!rutaActiva) {
-      res.status(404).json({ error: 'Ruta activa no encontrada' });
+      res.status(404).json({ error: 'Ruta no encontrada' });
     } else {
       res.status(200).json(rutaActiva);
     }
@@ -43,7 +43,7 @@ export const updateRutaActiva = async (req, res) => {
       { new: true }
     );
     if (!rutaActivaActualizada) {
-      res.status(404).json({ error: 'Ruta activa no encontrada' });
+      res.status(404).json({ error: 'Ruta no encontrada' });
     } else {
       res.status(200).json(rutaActivaActualizada);
     }
@@ -57,7 +57,7 @@ export const deleteRutaActiva = async (req, res) => {
   try {
     const rutaActivaEliminada = await rutaActiva_MongooseModel.findByIdAndRemove(req.params.id);
     if (!rutaActivaEliminada) {
-      res.status(404).json({ error: 'Ruta activa no encontrada' });
+      res.status(404).json({ error: 'Ruta no encontrada' });
     } else {
       res.status(204).end();
     }
