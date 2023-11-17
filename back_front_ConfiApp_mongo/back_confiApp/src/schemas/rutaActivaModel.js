@@ -16,7 +16,7 @@ export const rutaActiva_Mongoose = new Schema({
     "_id": mongoose.ObjectId,
     "fechaActual": String,
     "distanciaAproximada": Number,
-    "posicionActual": {"latitud": String, "longitud": String},
+    "posicionActual": {"latitud": String,        "longitud": String},
 }, { collection: "rutaActiva" })
 
 export const rutaActiva_MongooseModel = model("rutaActiva_Mongoose", rutaActiva_Mongoose);
