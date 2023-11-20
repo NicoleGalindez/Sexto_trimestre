@@ -110,21 +110,21 @@ router.delete('/rutaActiva/:id', deleteRutaActiva);
 // routes.js
 
 import {
-  getAllRutasActivas,
-  getRutaActivaById,
-  createRutaActiva,
-  updateRutaActiva,
-  deleteRutaActiva,
+  getAllRutas,
+  getRutaById,
+  createRuta,
+  updateRuta,
+  deleteRuta,
 } from './rutaController';
 
 
 
-// Rutas para las rutas activas
-router.get('/rutasActivas', getAllRutasActivas);
-router.get('/rutasActivas/:id', getRutaActivaById);
-router.post('/rutasActivas', createRutaActiva);
-router.put('/rutasActivas/:id', updateRutaActiva);
-router.delete('/rutasActivas/:id', deleteRutaActiva);
+// Rutas para las rutas 
+router.get('/rutasActivas', getAllRutas);
+router.get('/rutasActivas/:id', getRutaById);
+router.post('/rutasActivas', createRuta);
+router.put('/rutasActivas/:id', updateRuta);
+router.delete('/rutasActivas/:id', deleteRuta);
 
 
 //_________________________________________________________
