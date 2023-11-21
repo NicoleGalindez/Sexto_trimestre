@@ -1,3 +1,4 @@
+import './style.css';
 
 //importar de react :
 const r='__________________________';
@@ -76,7 +77,7 @@ export function Hook_U_CONTEXT(){
                    </ThemeContext.Provider>)
 }
 
-function Toolbar (props){
+function Toolbar (){
     return( <>
               <ThemeButton/>
             </> );
@@ -90,6 +91,16 @@ function ThemeButton(){
         <button style={{background:theme.background, color:theme.foreground}}>
          context!
         </button>
+
+      <br></br>
+      <br></br>
+
+    
+    <div style={{background:theme.background, color:theme.foreground}}
+     class="cuadro"></div>
+
+
+
         <h4>{r}</h4>  </>
           );
 }
