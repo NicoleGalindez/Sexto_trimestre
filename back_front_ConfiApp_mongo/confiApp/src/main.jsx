@@ -1,6 +1,10 @@
 import React from "react";
 import  ReactDOM  from "react-dom/client";
 import { App } from "./App";
+import  {FrontEnd} from "./Front";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {MiComponente} from "./Front2";
+
 
 // import { App } from "./holamundo";
 // import { Avatar, FirstApp5 , FirstApp4, } from "./FirstApp";
@@ -20,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
      <React.StrictMode>
        
      
-     <App/>
+     <FrontEnd/>
      
 
      </React.StrictMode>

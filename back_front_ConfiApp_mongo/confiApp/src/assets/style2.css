@@ -1,0 +1,56 @@
+/*Imagen de la otra familia*/
+
+#imagenn{
+    height: 526px;
+    width: 665px;
+}
+
+#mitad{
+    text-align: center;
+}
+
+
+/*ocultar linea hr con color blanco para hacer la etiqueta*/
+.blanquito{
+    color: white;
+    
+}
+
+
+
+/*Alinear imagen del celular a la derecha*/
+#derecha{
+    position: absolute;
+    right: 4%;
+    border-radius: 20px;
+    left: 86%;    
+    width: 16%;
+    top: 8%;
+    
+}
+
+
+
+/*Centrar el contenido donde está la imagen*/
+
+#centradito{
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+
+
+#hola:hover{
+    background-color: rgba(116, 220, 233, 0.841);
+    color: white;
+    transition: 400ms;
+}
+
+
+
+#distancia{
+    letter-spacing: 0.2px;
+    padding-top: 20px;
+    font-size: 1.6em;
+}

@@ -1,15 +1,20 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'animate.css/animate.min.css';
+// import 'aos/aos.css';
+// import 'bootstrap-icons/bootstrap-icons.css';
+// import 'boxicons/css/boxicons.min.css';
+// import 'remixicon/remixicon.css';
+// import Swiper from 'swiper';
+// import 'swiper/swiper-bundle.min.css';
+// import 'css/style.css';
+import './assets/boostrap.css';
+import './assets/boostrap.min.css';
+import './assets/style.css'
+import './assets/style2.css'
 
-
+export function FrontEnd() {
+  return (
     <div>
       {/* Header */}
       <header id="header" className="fixed-top">
@@ -86,9 +91,6 @@
       </header>
       {/* End Header */}
     </div>
+  );
+}
 
-
-
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>

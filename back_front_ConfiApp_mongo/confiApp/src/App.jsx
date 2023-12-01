@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import {BrowserRouter, Routes, Route , Link} from 'react-router-dom'
 import { Home, Landing , Dashboard, Analytics, Admin} from './pages'
-import { useState } from 'react'
-
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 export function App (){
 
@@ -12,7 +12,9 @@ const login =()=>{
     //request done
     setUser({
         id:1,
-        name:"john"
+        name:"john",
+        permissions:['analize'],
+        roles: ['admin']
     })
 }
 const logout =()=> setUser(null)
@@ -36,10 +38,29 @@ const logout =()=> setUser(null)
             <Routes>
                 <Route index  element={ <Landing/> }  />
                 <Route path='/landing'  element={ <Landing/>}  />
-                <Route path='/home'  element={ <Home user={user } />} />
-                <Route path='/dashboard'  element={ <Dashboard/>} />
-                <Route path='/analytics'  element={ <Analytics/>} />
-                <Route path='/admin'  element={ <Admin/>} />
+                
+                <Route element={  <ProtectedRoute isAllowed={!!user }/>  }  > 
+
+                     <Route path='/home'  element={ < Home /> }/>
+                     <Route path='/dashboard'  element={ < Dashboard /> }/>
+                </Route> 
+
+                <Route path='/analytics'  element={
+                    <ProtectedRoute 
+                            isAllowed={!!user && user.permissions.includes('analize')}  
+                            redirectTo='/home'
+                    >
+                        <Analytics/>
+                    </ProtectedRoute>
+                     } />
+                <Route path='/admin'  element={ 
+
+                    <ProtectedRoute
+                            isAllowed={!!user && user.roles.includes('admin')}
+                            redirectTo='/home'>
+                        <Admin/>
+                    </ProtectedRoute>
+                } />
             </Routes>
         </BrowserRouter>
     )
