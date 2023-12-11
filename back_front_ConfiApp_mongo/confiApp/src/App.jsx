@@ -19,8 +19,6 @@ const login =()=>{
 }
 const logout =()=> setUser(null)
 
-
-
     return(
         <BrowserRouter>
 
